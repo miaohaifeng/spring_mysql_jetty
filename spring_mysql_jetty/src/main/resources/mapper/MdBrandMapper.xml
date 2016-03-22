@@ -1,0 +1,153 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.platform.controller.mapper.MdBrandMapper" >
+  <resultMap id="BaseResultMap" type="com.platform.models.MdBrand" >
+    <id column="id" property="id" jdbcType="INTEGER" />
+    <result column="advertiserId" property="advertiserid" jdbcType="INTEGER" />
+    <result column="name" property="name" jdbcType="VARCHAR" />
+    <result column="industry" property="industry" jdbcType="CHAR" />
+    <result column="comments" property="comments" jdbcType="VARCHAR" />
+    <result column="delFlg" property="delflg" jdbcType="BIT" />
+    <result column="createUser" property="createuser" jdbcType="INTEGER" />
+    <result column="updateUser" property="updateuser" jdbcType="INTEGER" />
+    <result column="createTime" property="createtime" jdbcType="TIMESTAMP" />
+    <result column="updateTime" property="updatetime" jdbcType="TIMESTAMP" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    id, advertiserId, name, industry, comments, delFlg, createUser, updateUser, createTime, 
+    updateTime
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from md_brand
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from md_brand
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" useGeneratedKeys="true" keyProperty="id" parameterType="com.platform.models.MdBrand" >
+    insert into md_brand (id, advertiserId, name, 
+      industry, comments, delFlg, 
+      createUser, updateUser, createTime, 
+      updateTime)
+    values (#{id,jdbcType=INTEGER}, #{advertiserid,jdbcType=INTEGER}, #{name,jdbcType=VARCHAR}, 
+      #{industry,jdbcType=CHAR}, #{comments,jdbcType=VARCHAR}, #{delflg,jdbcType=BIT}, 
+      #{createuser,jdbcType=INTEGER}, #{updateuser,jdbcType=INTEGER}, #{createtime,jdbcType=TIMESTAMP}, 
+      #{updatetime,jdbcType=TIMESTAMP})
+  </insert>
+  <insert id="insertSelective" parameterType="com.platform.models.MdBrand" >
+    insert into md_brand
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        id,
+      </if>
+      <if test="advertiserid != null" >
+        advertiserId,
+      </if>
+      <if test="name != null" >
+        name,
+      </if>
+      <if test="industry != null" >
+        industry,
+      </if>
+      <if test="comments != null" >
+        comments,
+      </if>
+      <if test="delflg != null" >
+        delFlg,
+      </if>
+      <if test="createuser != null" >
+        createUser,
+      </if>
+      <if test="updateuser != null" >
+        updateUser,
+      </if>
+      <if test="createtime != null" >
+        createTime,
+      </if>
+      <if test="updatetime != null" >
+        updateTime,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="advertiserid != null" >
+        #{advertiserid,jdbcType=INTEGER},
+      </if>
+      <if test="name != null" >
+        #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="industry != null" >
+        #{industry,jdbcType=CHAR},
+      </if>
+      <if test="comments != null" >
+        #{comments,jdbcType=VARCHAR},
+      </if>
+      <if test="delflg != null" >
+        #{delflg,jdbcType=BIT},
+      </if>
+      <if test="createuser != null" >
+        #{createuser,jdbcType=INTEGER},
+      </if>
+      <if test="updateuser != null" >
+        #{updateuser,jdbcType=INTEGER},
+      </if>
+      <if test="createtime != null" >
+        #{createtime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updatetime != null" >
+        #{updatetime,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.platform.models.MdBrand" >
+    update md_brand
+    <set >
+      <if test="advertiserid != null" >
+        advertiserId = #{advertiserid,jdbcType=INTEGER},
+      </if>
+      <if test="name != null" >
+        name = #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="industry != null" >
+        industry = #{industry,jdbcType=CHAR},
+      </if>
+      <if test="comments != null" >
+        comments = #{comments,jdbcType=VARCHAR},
+      </if>
+      <if test="delflg != null" >
+        delFlg = #{delflg,jdbcType=BIT},
+      </if>
+      <if test="createuser != null" >
+        createUser = #{createuser,jdbcType=INTEGER},
+      </if>
+      <if test="updateuser != null" >
+        updateUser = #{updateuser,jdbcType=INTEGER},
+      </if>
+      <if test="createtime != null" >
+        createTime = #{createtime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updatetime != null" >
+        updateTime = #{updatetime,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.platform.models.MdBrand" >
+    update md_brand
+    set advertiserId = #{advertiserid,jdbcType=INTEGER},
+      name = #{name,jdbcType=VARCHAR},
+      industry = #{industry,jdbcType=CHAR},
+      comments = #{comments,jdbcType=VARCHAR},
+      delFlg = #{delflg,jdbcType=BIT},
+      createUser = #{createuser,jdbcType=INTEGER},
+      updateUser = #{updateuser,jdbcType=INTEGER},
+      createTime = #{createtime,jdbcType=TIMESTAMP},
+      updateTime = #{updatetime,jdbcType=TIMESTAMP}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+</mapper>
